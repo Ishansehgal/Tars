@@ -67,7 +67,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <box size="0.32 0.24 1" />
+        <box size="0.32 0.24 1.05" />
       </geometry>
       <material name="material">
         <color rgba="0.026241221889696346 0.13286832154414627 0.4019777798219466 1" />
@@ -76,7 +76,7 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <box size="0.32 0.24 1" />
+        <box size="0.32 0.24 1.05" />
       </geometry>
     </collision>
     <inertial>
@@ -108,7 +108,7 @@
   <joint name="base_link_to_intermediate2" type="prismatic">
     <parent link="base_link" />
     <child link="intermediate_link2" />
-    <origin xyz="-0.41295728577975466 -0.0005718776701223449 0.5" rpy="0 0 0" />
+    <origin xyz="-0.4004037835261366 -0.0014640307123229834 0.5" rpy="0 0 0" />
     <axis xyz="0 0 1"/>
     <limit effort="1000.0" lower="0.0" upper="0.5" velocity="0.5"/>
   </joint>

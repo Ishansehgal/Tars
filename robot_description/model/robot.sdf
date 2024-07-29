@@ -1,0 +1,128 @@
+<sdf version="1.6">
+<model name="GeneratedModel" canonical_link='base_link'>
+  <link name="base_link">
+    <pose>0 0.5 0 0 0 0</pose>
+    <collision name='base_link collision'>
+      <geometry>
+        <box>
+          <size>0.46796655054122455 1.0514391556143112 0.2399913173327918</size>
+        </box>
+      </geometry>
+    </collision>
+    <visual name='base_link visual'>
+      <geometry>
+        <box>
+          <size>0.46796655054122455 1.0514391556143112 0.2399913173327918</size>
+        </box>
+      </geometry>
+    </visual>
+    <material>
+      <script>
+        <uri>file://media/materials/scripts/gazebo.material</uri>
+        <name>Gazebo/Red</name>
+      </script>
+      <ambient>0.6866853124288865 0.17788841597328695 0.6444796819634361 1</ambient>
+      <diffuse>0.6866853124288865 0.17788841597328695 0.6444796819634361 1</diffuse>
+      <specular>0.1 0.1 0.1 1</specular>
+      <emissive>0 0 0 1</emissive>
+    </material>
+    <inertial>
+      <mass>1</mass>
+      <inertia>
+        <ixx>0</ixx>
+        <ixy>0</ixy>
+        <ixz>0</ixz>
+        <iyy>0</iyy>
+        <iyz>0</iyz>
+        <izz>0</izz>
+      </inertia>
+    </inertial>
+  </link>
+  <link name="cube2">
+    <pose>0.4004037835261366 0 -0.0014640307123229834 0 0 0</pose>
+    <collision name='cube2 collision'>
+      <geometry>
+        <box>
+          <size>0.32 1.05 0.24</size>
+        </box>
+      </geometry>
+    </collision>
+    <visual name='cube2 visual'>
+      <geometry>
+        <box>
+          <size>0.32 1.05 0.24</size>
+        </box>
+      </geometry>
+    </visual>
+    <material>
+      <script>
+        <uri>file://media/materials/scripts/gazebo.material</uri>
+        <name>Gazebo/Red</name>
+      </script>
+      <ambient>0.11443537381770343 0.11193242782769693 0.23455058215026167 1</ambient>
+      <diffuse>0.11443537381770343 0.11193242782769693 0.23455058215026167 1</diffuse>
+      <specular>0.1 0.1 0.1 1</specular>
+      <emissive>0 0 0 1</emissive>
+    </material>
+    <inertial>
+      <mass>1</mass>
+      <inertia>
+        <ixx>0</ixx>
+        <ixy>0</ixy>
+        <ixz>0</ixz>
+        <iyy>0</iyy>
+        <iyz>0</iyz>
+        <izz>0</izz>
+      </inertia>
+    </inertial>
+  </link>
+  <joint name="base_link_to_cube2" type="prismatic">
+    <parent>base_link</parent>
+    <child>cube2</child>
+    <pose>0.4004037835261366 0 -0.0014640307123229834 0 0 0</pose>
+  </joint>
+  <link name="cube3">
+    <pose>-0.41295728577975466 0 -0.0005718776701223449 0 0 0</pose>
+    <collision name='cube3 collision'>
+      <geometry>
+        <box>
+          <size>0.32 1 0.24</size>
+        </box>
+      </geometry>
+    </collision>
+    <visual name='cube3 visual'>
+      <geometry>
+        <box>
+          <size>0.32 1 0.24</size>
+        </box>
+      </geometry>
+    </visual>
+    <material>
+      <script>
+        <uri>file://media/materials/scripts/gazebo.material</uri>
+        <name>Gazebo/Red</name>
+      </script>
+      <ambient>0.026241221889696346 0.13286832154414627 0.4019777798219466 1</ambient>
+      <diffuse>0.026241221889696346 0.13286832154414627 0.4019777798219466 1</diffuse>
+      <specular>0.1 0.1 0.1 1</specular>
+      <emissive>0 0 0 1</emissive>
+    </material>
+    <inertial>
+      <mass>1</mass>
+      <inertia>
+        <ixx>0</ixx>
+        <ixy>0</ixy>
+        <ixz>0</ixz>
+        <iyy>0</iyy>
+        <iyz>0</iyz>
+        <izz>0</izz>
+      </inertia>
+    </inertial>
+  </link>
+  <joint name="base_link_to_cube3" type="prismatic">
+    <parent>base_link</parent>
+    <child>cube3</child>
+    <pose>-0.41295728577975466 0 -0.0005718776701223449 0 0 0</pose>
+  </joint>
+</model>
+</sdf>

@@ -1,0 +1,60 @@
+<?xml version="1.0" ?>
+<robot name="tars_robot" xmlns:xacro="http://www.ros.org/wiki/xacro" >
+
+<xacro:property name="body_color" value="Gazebo/Silver" />
+
+<gazebo>
+  <plugin name="control" filename="libgazebo_ros_control.so"/>
+</gazebo>
+<gazebo reference="base_link">
+  <material>${body_color}</material>
+  <mu1>1</mu1>
+  <mu2>1</mu2>
+  <self_collide>false</self_collide>
+  <gravity>true</gravity>
+</gazebo>
+
+<gazebo reference="leg1con_2">
+  <material>${body_color}</material>
+  <mu1>1</mu1>
+  <mu2>1</mu2>
+  <self_collide>false</self_collide>
+</gazebo>
+
+<gazebo reference="leg1con_3">
+  <material>${body_color}</material>
+  <mu1>1</mu1>
+  <mu2>1</mu2>
+  <self_collide>true</self_collide>
+</gazebo>
+
+<gazebo reference="leg1_1">
+  <material>${body_color}</material>
+  <mu1>1</mu1>
+  <mu2>1</mu2>
+  <self_collide>true</self_collide>
+</gazebo>
+
+<gazebo reference="leg2_1">
+  <material>${body_color}</material>
+  <mu1>1</mu1>
+  <mu2>1</mu2>
+  <self_collide>true</self_collide>
+</gazebo>
+<gazebo>
+    <plugin name="gazebo_ros2_control" filename="libgazebo_ros2_control.so">
+        <robotNamespace>/tars_Robot</robotNamespace>
+        <controlPeriod>0.01</controlPeriod>
+        <robotParam>/robot_description</robotParam>
+        <parameters>/home/techturners/Videos/tars_robot_description/config/controllers2.yaml</parameters>
+        <ros2_control_plugin>gazebo_ros2_control/GazeboSystem</ros2_control_plugin>
+    </plugin>
+</gazebo>
+<gazebo>
+  <physics type="simbody">
+    <max_step_size>0.001</max_step_size>
+    <real_time_update_rate>1000</real_time_update_rate>
+  </physics>
+</gazebo>
+
+</robot>

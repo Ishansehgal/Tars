@@ -2,7 +2,7 @@
 import os
 from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription
-from launch.actions import DeclareLaunchArgument
+from launch.actions import DeclareLaunchArgument, ExecuteProcess
 from launch.substitutions import LaunchConfiguration
 from launch_ros.actions import Node
 from launch.actions import IncludeLaunchDescription
@@ -48,7 +48,7 @@ def generate_launch_description():
         PythonLaunchDescriptionSource(gazebo_launch_file),
         launch_arguments={"world": "empty.world"}.items(),
     )
-
+    
     # Define the spawn_entity node to spawn the robot in Gazebo
     spawn_entity_node = Node(
         package="gazebo_ros",
@@ -61,6 +61,15 @@ def generate_launch_description():
         ],
         output="screen",
     )
+    load_joint_state_controller = ExecuteProcess(
+        cmd=['ros2', 'control', 'load_controller', '--set-state', 'active', 'joint_state_broadcaster'],
+        output='screen'
+    )
+
+    load_joint_trajectory_controller = ExecuteProcess(
+        cmd=['ros2', 'control', 'load_controller', '--set-state', 'active', 'joint_trajectory_controller'],
+        output='screen'
+    )
 
     return LaunchDescription(
         [
@@ -72,7 +81,9 @@ def generate_launch_description():
             robot_state_publisher_node,
             joint_gui,
             rviz_node,
-            # gazebo_node,
-            # spawn_entity_node,
+            gazebo_node,
+            spawn_entity_node,
+            load_joint_state_controller,
+            load_joint_trajectory_controller
         ]
     )

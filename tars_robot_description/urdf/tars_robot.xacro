@@ -1,0 +1,182 @@
+<?xml version="1.0" ?>
+<robot name="tars_robot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<xacro:include filename="$(find tars_robot_description)/urdf/materials.xacro" />
+<xacro:include filename="$(find tars_robot_description)/urdf/tars_robot.trans" />
+<xacro:include filename="$(find tars_robot_description)/urdf/tars_robot.gazebo" />
+<link name="base_link">
+  <inertial>
+    <origin xyz="0.008319588931624738 -0.010813885260023571 0.14310917214526914" rpy="0 0 0"/>
+    <mass value="4.0824"/>
+    <inertia ixx="0.036398" iyy="0.039022" izz="0.005861" ixy="-0.0" iyz="-0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find tars_robot_description)/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find tars_robot_description)/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="leg1con_2">
+  <inertial>
+    <origin xyz="-0.02550041106837525 1.1473997643327016e-07 0.006999743573840589" rpy="0 0 0"/>
+    <mass value="0.30660783330227587"/>
+    <inertia ixx="0.000822" iyy="0.000879" izz="7.6e-05" ixy="-0.0" iyz="0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.00668 0.010814 -0.131538" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find tars_robot_description)/meshes/leg1con_2.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.00668 0.010814 -0.131538" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find tars_robot_description)/meshes/leg1con_2.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="leg1con_3">
+  <inertial>
+    <origin xyz="0.025499588931624725 1.1473997643327016e-07 0.00799974357384059" rpy="0 0 0"/>
+    <mass value="0.30660783330227587"/>
+    <inertia ixx="0.000822" iyy="0.000879" izz="7.6e-05" ixy="-0.0" iyz="-0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.02332 0.010814 -0.131538" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find tars_robot_description)/meshes/leg1con_3.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.02332 0.010814 -0.131538" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find tars_robot_description)/meshes/leg1con_3.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="leg1_1">
+  <inertial>
+    <origin xyz="-0.14250041106837524 1.1473997643500489e-07 0.03899974357384056" rpy="0 0 0"/>
+    <mass value="3.6449999999999996"/>
+    <inertia ixx="0.028431" iyy="0.029046" izz="0.002802" ixy="-0.0" iyz="-0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.04732 0.010814 -0.109538" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find tars_robot_description)/meshes/leg1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.04732 0.010814 -0.109538" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find tars_robot_description)/meshes/leg1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="leg2_1">
+  <inertial>
+    <origin xyz="0.2744995889316246 1.1473997643673961e-07 0.03799974357384056" rpy="0 0 0"/>
+    <mass value="3.644999999999998"/>
+    <inertia ixx="0.028431" iyy="0.029046" izz="0.002802" ixy="0.0" iyz="-0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.16268 0.010814 -0.111538" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find tars_robot_description)/meshes/leg2_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.16268 0.010814 -0.111538" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://$(find tars_robot_description)/meshes/leg2_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<joint name="Slider_14" type="prismatic">
+  <origin xyz="-0.00668 -0.010814 0.131538" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="leg1con_2"/>
+  <axis xyz="0.0 0.0 1.0"/>
+  <limit upper="0.046" lower="0.0" effort="40" velocity="3"/>
+  <dynamics damping="10.0" friction="10.0" />
+
+</joint>
+
+<joint name="Slider_15" type="prismatic">
+  <origin xyz="0.02332 -0.010814 0.131538" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="leg1con_3"/>
+  <axis xyz="0.0 0.0 1.0"/>
+  <limit upper="0.046" lower="0.0" effort="900" velocity="3"/>
+</joint>
+
+<joint name="Revolute_16" type="revolute">
+  <origin xyz="0.054 0.0 -0.022" rpy="0 0 0"/>
+  <parent link="leg1con_2"/>
+  <child link="leg1_1"/>
+  <axis xyz="1.0 0.0 0.0"/>
+  <limit upper="1.22173" lower="0.0" effort="900" velocity="3"/>
+</joint>
+
+<joint name="Revolute_17" type="revolute">
+  <origin xyz="-0.186 0.0 -0.02" rpy="0 0 0"/>
+  <parent link="leg1con_3"/>
+  <child link="leg2_1"/>
+  <axis xyz="1.0 0.0 0.0"/>
+  <limit upper="1.22173" lower="0.0" effort="900" velocity="3"/>
+</joint>
+<ros2_control name="GazeboSystem" type="system">
+    <hardware>
+      <plugin>gazebo_ros2_control/GazeboSystem</plugin>
+    </hardware>
+    <joint name="Revolute_16">
+      <command_interface name="position">
+        <param name="min">0</param>
+        <param name="max">1.212198</param>
+      </command_interface>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
+    <joint name="Revolute_17">
+      <command_interface name="position">
+        <param name="min">0</param>
+        <param name="max">1.212198</param>
+      </command_interface>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
+    <joint name="Slider_14">
+      <command_interface name="position">
+        <param name="min">0</param>
+        <param name="max">0.046</param>
+      </command_interface>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
+    <joint name="Slider_15">
+      <command_interface name="position">
+        <param name="min">0</param>
+        <param name="max">0.046</param>
+      </command_interface>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
+  </ros2_control>
+</robot>

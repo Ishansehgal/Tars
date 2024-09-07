@@ -5,8 +5,8 @@
       <geometry>
         <box size="0.46796655054122455 0.2399913173327918 1.0514391556143112" />
       </geometry>
-      <material name="material">
-        <color rgba="0.6866853124288865 0.17788841597328695 0.6444796819634361 1" />
+      <material name="base_material">
+        <color rgba="0.2 0.2 0.2 1" />
       </material>
     </visual>
     <collision>
@@ -17,13 +17,27 @@
     </collision>
     <inertial>
       <origin xyz="0 0 0.5" rpy="0 0 0" />
-      <mass value="1" />
-      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0" />
+      <mass value="10" />
+      <inertia ixx="0.1" ixy="0" ixz="0" iyy="0.1" iyz="0" izz="0.1" />
     </inertial>
   </link>
   
-  <!-- Intermediate link for cube2 prismatic motion -->
-  <link name="intermediate_link1">
+  <link name="arm1">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <box size="0.05 0.05 0.5" />
+      </geometry>
+      <material name="arm_material">
+        <color rgba="0.5 0.5 0.5 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <box size="0.05 0.05 0.5" />
+      </geometry>
+    </collision>
     <inertial>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <mass value="0.1" />
@@ -31,8 +45,20 @@
     </inertial>
   </link>
 
-  <!-- Intermediate link for cube3 prismatic motion -->
-  <link name="intermediate_link2">
+  <link name="arm2">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <box size="0.05 0.05 0.5" />
+      </geometry>
+      <material name="arm_material" />
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <box size="0.05 0.05 0.5" />
+      </geometry>
+    </collision>
     <inertial>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <mass value="0.1" />
@@ -46,7 +72,7 @@
       <geometry>
         <box size="0.32 0.24 1.05" />
       </geometry>
-      <material name="material">
+      <material name="cube2_material">
         <color rgba="0.11443537381770343 0.11193242782769693 0.23455058215026167 1" />
       </material>
     </visual>
@@ -58,8 +84,8 @@
     </collision>
     <inertial>
       <origin xyz="0 0 0" rpy="0 0 0" />
-      <mass value="1" />
-      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0" />
+      <mass value="10" />
+      <inertia ixx="0.1" ixy="0" ixz="0" iyy="0.1" iyz="0" izz="0.1" />
     </inertial>
   </link>
 
@@ -69,7 +95,7 @@
       <geometry>
         <box size="0.32 0.24 1.05" />
       </geometry>
-      <material name="material">
+      <material name="cube3_material">
         <color rgba="0.026241221889696346 0.13286832154414627 0.4019777798219466 1" />
       </material>
     </visual>
@@ -81,44 +107,78 @@
     </collision>
     <inertial>
       <origin xyz="0 0 0" rpy="0 0 0" />
-      <mass value="1" />
-      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0" />
+      <mass value="10" />
+      <inertia ixx="0.1" ixy="0" ixz="0" iyy="0.1" iyz="0" izz="0.1" />
     </inertial>
   </link>
 
-  <!-- Prismatic Joint for cube2 -->
-  <joint name="base_link_to_intermediate1" type="prismatic">
+  <joint name="base_link_to_arm1" type="prismatic">
     <parent link="base_link" />
-    <child link="intermediate_link1" />
-    <origin xyz="0.4004037835261366 -0.0014640307123229834 0.5" rpy="0 0 0" />
+    <child link="arm1" />
+    <origin xyz="0.234 0 0.5" rpy="0 0 0" />
     <axis xyz="0 0 1"/>
     <limit effort="1000.0" lower="0.0" upper="0.5" velocity="0.5"/>
   </joint>
 
-  <!-- Revolute Joint for cube2 -->
-  <joint name="intermediate1_to_cube2" type="revolute">
-    <parent link="intermediate_link1" />
+  <joint name="arm1_to_cube2" type="revolute">
+    <parent link="arm1" />
     <child link="cube2" />
-    <origin xyz="0 0 0" rpy="0 0 0" />
+    <origin xyz="0.185 0 0" rpy="0 0 0" />
     <axis xyz="1 0 0"/>
     <limit effort="10.0" lower="-1.57" upper="1.57" velocity="10"/>
   </joint>
 
-  <!-- Prismatic Joint for cube3 -->
-  <joint name="base_link_to_intermediate2" type="prismatic">
+  <joint name="base_link_to_arm2" type="prismatic">
     <parent link="base_link" />
-    <child link="intermediate_link2" />
-    <origin xyz="-0.4004037835261366 -0.0014640307123229834 0.5" rpy="0 0 0" />
+    <child link="arm2" />
+    <origin xyz="-0.234 0 0.5" rpy="0 0 0" />
     <axis xyz="0 0 1"/>
     <limit effort="1000.0" lower="0.0" upper="0.5" velocity="0.5"/>
   </joint>
 
-  <!-- Revolute Joint for cube3 -->
-  <joint name="intermediate2_to_cube3" type="revolute">
-    <parent link="intermediate_link2" />
+  <joint name="arm2_to_cube3" type="revolute">
+    <parent link="arm2" />
     <child link="cube3" />
-    <origin xyz="0 0 0" rpy="0 0 0" />
+    <origin xyz="-0.185 0 0" rpy="0 0 0" />
     <axis xyz="1 0 0"/>
     <limit effort="10.0" lower="-1.57" upper="1.57" velocity="10"/>
   </joint>
+
+  <ros2_control name="GeneratedRobot_control" type="system">
+    <hardware>
+      <plugin>gazebo_ros2_control/GazeboSystem</plugin>
+    </hardware>
+    <joint name="base_link_to_arm1">
+      <command_interface name="position">
+        <param name="min">0.0</param>
+        <param name="max">0.5</param>
+      </command_interface>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
+    <joint name="arm1_to_cube2">
+      <command_interface name="position">
+        <param name="min">-1.57</param>
+        <param name="max">1.57</param>
+      </command_interface>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
+    <joint name="base_link_to_arm2">
+      <command_interface name="position">
+        <param name="min">0.0</param>
+        <param name="max">0.5</param>
+      </command_interface>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
+    <joint name="arm2_to_cube3">
+      <command_interface name="position">
+        <param name="min">-1.57</param>
+        <param name="max">1.57</param>
+      </command_interface>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
+  </ros2_control>
 </robot>

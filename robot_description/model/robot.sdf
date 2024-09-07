@@ -1,128 +1,257 @@
 <sdf version="1.6">
-<model name="GeneratedModel" canonical_link='base_link'>
-  <link name="base_link">
-    <pose>0 0.5 0 0 0 0</pose>
-    <collision name='base_link collision'>
-      <geometry>
-        <box>
-          <size>0.46796655054122455 1.0514391556143112 0.2399913173327918</size>
-        </box>
-      </geometry>
-    </collision>
-    <visual name='base_link visual'>
-      <geometry>
-        <box>
-          <size>0.46796655054122455 1.0514391556143112 0.2399913173327918</size>
-        </box>
-      </geometry>
-    </visual>
-    <material>
-      <script>
-        <uri>file://media/materials/scripts/gazebo.material</uri>
-        <name>Gazebo/Red</name>
-      </script>
-      <ambient>0.6866853124288865 0.17788841597328695 0.6444796819634361 1</ambient>
-      <diffuse>0.6866853124288865 0.17788841597328695 0.6444796819634361 1</diffuse>
-      <specular>0.1 0.1 0.1 1</specular>
-      <emissive>0 0 0 1</emissive>
-    </material>
-    <inertial>
-      <mass>1</mass>
-      <inertia>
-        <ixx>0</ixx>
-        <ixy>0</ixy>
-        <ixz>0</ixz>
-        <iyy>0</iyy>
-        <iyz>0</iyz>
-        <izz>0</izz>
-      </inertia>
-    </inertial>
-  </link>
-  <link name="cube2">
-    <pose>0.4004037835261366 0 -0.0014640307123229834 0 0 0</pose>
-    <collision name='cube2 collision'>
-      <geometry>
-        <box>
-          <size>0.32 1.05 0.24</size>
-        </box>
-      </geometry>
-    </collision>
-    <visual name='cube2 visual'>
-      <geometry>
-        <box>
-          <size>0.32 1.05 0.24</size>
-        </box>
-      </geometry>
-    </visual>
-    <material>
-      <script>
-        <uri>file://media/materials/scripts/gazebo.material</uri>
-        <name>Gazebo/Red</name>
-      </script>
-      <ambient>0.11443537381770343 0.11193242782769693 0.23455058215026167 1</ambient>
-      <diffuse>0.11443537381770343 0.11193242782769693 0.23455058215026167 1</diffuse>
-      <specular>0.1 0.1 0.1 1</specular>
-      <emissive>0 0 0 1</emissive>
-    </material>
-    <inertial>
-      <mass>1</mass>
-      <inertia>
-        <ixx>0</ixx>
-        <ixy>0</ixy>
-        <ixz>0</ixz>
-        <iyy>0</iyy>
-        <iyz>0</iyz>
-        <izz>0</izz>
-      </inertia>
-    </inertial>
-  </link>
-  <joint name="base_link_to_cube2" type="prismatic">
-    <parent>base_link</parent>
-    <child>cube2</child>
-    <pose>0.4004037835261366 0 -0.0014640307123229834 0 0 0</pose>
-  </joint>
-  <link name="cube3">
-    <pose>-0.41295728577975466 0 -0.0005718776701223449 0 0 0</pose>
-    <collision name='cube3 collision'>
-      <geometry>
-        <box>
-          <size>0.32 1 0.24</size>
-        </box>
-      </geometry>
-    </collision>
-    <visual name='cube3 visual'>
-      <geometry>
-        <box>
-          <size>0.32 1 0.24</size>
-        </box>
-      </geometry>
-    </visual>
-    <material>
-      <script>
-        <uri>file://media/materials/scripts/gazebo.material</uri>
-        <name>Gazebo/Red</name>
-      </script>
-      <ambient>0.026241221889696346 0.13286832154414627 0.4019777798219466 1</ambient>
-      <diffuse>0.026241221889696346 0.13286832154414627 0.4019777798219466 1</diffuse>
-      <specular>0.1 0.1 0.1 1</specular>
-      <emissive>0 0 0 1</emissive>
-    </material>
-    <inertial>
-      <mass>1</mass>
-      <inertia>
-        <ixx>0</ixx>
-        <ixy>0</ixy>
-        <ixz>0</ixz>
-        <iyy>0</iyy>
-        <iyz>0</iyz>
-        <izz>0</izz>
-      </inertia>
-    </inertial>
-  </link>
-  <joint name="base_link_to_cube3" type="prismatic">
-    <parent>base_link</parent>
-    <child>cube3</child>
-    <pose>-0.41295728577975466 0 -0.0005718776701223449 0 0 0</pose>
-  </joint>
-</model>
+  <model name="GeneratedRobot">
+    <static>false</static>
+
+    <!-- Base Link -->
+    <link name="base_link">
+      <visual name="base_visual">
+        <pose>0 0 0.5 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.46796655054122455 0.2399913173327918 1.0514391556143112</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>0.2 0.2 0.2 1</ambient>
+          <diffuse>0.2 0.2 0.2 1</diffuse>
+          <specular>0.2 0.2 0.2 1</specular>
+        </material>
+      </visual>
+      <collision name="base_collision">
+        <pose>0 0 0.5 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.46796655054122455 0.2399913173327918 1.0514391556143112</size>
+          </box>
+        </geometry>
+      </collision>
+      <inertial>
+        <pose>0 0 0.5 0 0 0</pose>
+        <mass>10</mass>
+        <inertia>
+          <ixx>0.1</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.1</iyy>
+          <iyz>0</iyz>
+          <izz>0.1</izz>
+        </inertia>
+      </inertial>
+    </link>
+
+    <!-- Arm1 -->
+    <link name="arm1">
+      <visual name="arm1_visual">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.05 0.05 0.5</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>0.5 0.5 0.5 1</ambient>
+          <diffuse>0.5 0.5 0.5 1</diffuse>
+          <specular>0.5 0.5 0.5 1</specular>
+        </material>
+      </visual>
+      <collision name="arm1_collision">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.05 0.05 0.5</size>
+          </box>
+        </geometry>
+      </collision>
+      <inertial>
+        <pose>0 0 0 0 0 0</pose>
+        <mass>1.0</mass> <!-- Increased mass -->
+        <inertia>
+          <ixx>0.001</ixx> <!-- Increased inertia values -->
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.001</iyy>
+          <iyz>0</iyz>
+          <izz>0.001</izz>
+        </inertia>
+      </inertial>
+    </link>
+
+    <!-- Arm2 -->
+    <link name="arm2">
+      <visual name="arm2_visual">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.05 0.05 0.5</size>
+          </box>
+        </geometry>
+      </visual>
+      <collision name="arm2_collision">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.05 0.05 0.5</size>
+          </box>
+        </geometry>
+      </collision>
+      <inertial>
+        <pose>0 0 0 0 0 0</pose>
+        <mass>1.0</mass> <!-- Increased mass -->
+        <inertia>
+          <ixx>0.001</ixx> <!-- Increased inertia values -->
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.001</iyy>
+          <iyz>0</iyz>
+          <izz>0.001</izz>
+        </inertia>
+      </inertial>
+    </link>
+
+    <!-- Cube2 -->
+    <link name="cube2">
+      <visual name="cube2_visual">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.32 0.24 1.05</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>0.11443537381770343 0.11193242782769693 0.23455058215026167 1</ambient>
+          <diffuse>0.11443537381770343 0.11193242782769693 0.23455058215026167 1</diffuse>
+          <specular>0.11443537381770343 0.11193242782769693 0.23455058215026167 1</specular>
+        </material>
+      </visual>
+      <collision name="cube2_collision">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.32 0.24 1.05</size>
+          </box>
+        </geometry>
+      </collision>
+      <inertial>
+        <pose>0 0 0 0 0 0</pose>
+        <mass>10</mass>
+        <inertia>
+          <ixx>0.1</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.1</iyy>
+          <iyz>0</iyz>
+          <izz>0.1</izz>
+        </inertia>
+      </inertial>
+    </link>
+
+    <!-- Cube3 -->
+    <link name="cube3">
+      <visual name="cube3_visual">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.32 0.24 1.05</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>0.026241221889696346 0.13286832154414627 0.4019777798219466 1</ambient>
+          <diffuse>0.026241221889696346 0.13286832154414627 0.4019777798219466 1</diffuse>
+          <specular>0.026241221889696346 0.13286832154414627 0.4019777798219466 1</specular>
+        </material>
+      </visual>
+      <collision name="cube3_collision">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.32 0.24 1.05</size>
+          </box>
+        </geometry>
+      </collision>
+      <inertial>
+        <pose>0 0 0 0 0 0</pose>
+        <mass>10</mass>
+        <inertia>
+          <ixx>0.1</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.1</iyy>
+          <iyz>0</iyz>
+          <izz>0.1</izz>
+        </inertia>
+      </inertial>
+    </link>
+
+    <!-- Joints -->
+    <joint name="base_link_to_arm1" type="prismatic">
+      <parent>base_link</parent>
+      <child>arm1</child>
+      <pose>0.234 0 0.5 0 0 0</pose>
+      <axis>
+        <xyz>0 0 1</xyz>
+      </axis>
+      <limit>
+        <effort>1000.0</effort>
+        <lower>0.0</lower>
+        <upper>0.5</upper>
+        <velocity>0.2</velocity> <!-- Reduced velocity -->
+      </limit>
+    </joint>
+
+    <joint name="arm1_to_cube2" type="revolute">
+      <parent>arm1</parent>
+      <child>cube2</child>
+      <pose>0.185 0 0 0 0 0</pose>
+      <axis>
+        <xyz>1 0 0</xyz>
+      </axis>
+      <limit>
+        <effort>10.0</effort>
+        <lower>-1.57</lower>
+        <upper>1.57</upper>
+        <velocity>5</velocity> <!-- Reduced velocity -->
+      </limit>
+    </joint>
+
+    <joint name="base_link_to_arm2" type="prismatic">
+      <parent>base_link</parent>
+      <child>arm2</child>
+      <pose>-0.234 0 0.5 0 0 0</pose>
+      <axis>
+        <xyz>0 0 1</xyz>
+      </axis>
+      <limit>
+        <effort>1000.0</effort>
+        <lower>0.0</lower>
+        <upper>0.5</upper>
+        <velocity>0.2</velocity> <!-- Reduced velocity -->
+      </limit>
+    </joint>
+
+    <joint name="arm2_to_cube3" type="revolute">
+      <parent>arm2</parent>
+      <child>cube3</child>
+      <pose>-0.185 0 0 0 0 0</pose>
+      <axis>
+        <xyz>1 0 0</xyz>
+      </axis>
+      <limit>
+        <effort>10.0</effort>
+        <lower>-1.57</lower>
+        <upper>1.57</upper>
+        <velocity>5</velocity> <!-- Reduced velocity -->
+      </limit>
+    </joint>
+
+    <!-- Plugin -->
+    <plugin name="diff_drive" filename="libgazebo_ros_diff_drive.so">
+      <robotNamespace>/</robotNamespace>
+      <leftJoint>base_link_to_arm1</leftJoint>
+      <rightJoint>base_link_to_arm2</rightJoint>
+      <wheelSeparation>1.0</wheelSeparation>
+      <wheelDiameter>0.2</wheelDiameter>
+      <maxTorque>5.0</maxTorque>
+    </plugin>
+
+  </model>
 </sdf>

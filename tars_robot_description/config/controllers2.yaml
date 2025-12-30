@@ -11,10 +11,9 @@ controller_manager:
 joint_trajectory_controller:
   ros__parameters:
     joints:
-      - Revolute_16
-      - Revolute_17
-      - Slider_14
-      - Slider_15
+      - joint_center_linear
+      - joint_left_leg
+      - joint_right_leg
     interface_name: position
     command_interfaces:
       - position

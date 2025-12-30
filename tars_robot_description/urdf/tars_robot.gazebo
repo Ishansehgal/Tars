@@ -1,60 +1,74 @@
 <?xml version="1.0" ?>
 <robot name="tars_robot" xmlns:xacro="http://www.ros.org/wiki/xacro" >
 
-<xacro:property name="body_color" value="Gazebo/Silver" />
+  <xacro:property name="body_color" value="Gazebo/Silver" />
 
-<gazebo>
-  <plugin name="control" filename="libgazebo_ros_control.so"/>
-</gazebo>
-<gazebo reference="base_link">
-  <material>${body_color}</material>
-  <mu1>1</mu1>
-  <mu2>1</mu2>
-  <self_collide>false</self_collide>
-  <gravity>true</gravity>
-</gazebo>
-
-<gazebo reference="leg1con_2">
-  <material>${body_color}</material>
-  <mu1>1</mu1>
-  <mu2>1</mu2>
-  <self_collide>false</self_collide>
-</gazebo>
-
-<gazebo reference="leg1con_3">
-  <material>${body_color}</material>
-  <mu1>1</mu1>
-  <mu2>1</mu2>
-  <self_collide>true</self_collide>
-</gazebo>
-
-<gazebo reference="leg1_1">
-  <material>${body_color}</material>
-  <mu1>1</mu1>
-  <mu2>1</mu2>
-  <self_collide>true</self_collide>
-</gazebo>
-
-<gazebo reference="leg2_1">
-  <material>${body_color}</material>
-  <mu1>1</mu1>
-  <mu2>1</mu2>
-  <self_collide>true</self_collide>
-</gazebo>
-<gazebo>
-    <plugin name="gazebo_ros2_control" filename="libgazebo_ros2_control.so">
-        <robotNamespace>/tars_Robot</robotNamespace>
-        <controlPeriod>0.01</controlPeriod>
-        <robotParam>/robot_description</robotParam>
-        <parameters>/home/techturners/Videos/tars_robot_description/config/controllers2.yaml</parameters>
-        <ros2_control_plugin>gazebo_ros2_control/GazeboSystem</ros2_control_plugin>
+  <!-- Gazebo Fortress plugin -->
+  <gazebo>
+    <plugin filename="libign_ros2_control-system.so" name="ign_ros2_control::IgnitionROS2ControlPlugin">
+      <parameters>$(find tars_robot_description)/config/controllers2.yaml</parameters>
     </plugin>
-</gazebo>
-<gazebo>
-  <physics type="simbody">
-    <max_step_size>0.001</max_step_size>
-    <real_time_update_rate>1000</real_time_update_rate>
-  </physics>
-</gazebo>
+    <plugin filename="libignition-gazebo-pose-publisher-system.so" name="ignition::gazebo::systems::PosePublisher">
+      <publish_link_pose>false</publish_link_pose>
+      <use_pose_vector_msg>true</use_pose_vector_msg>
+      <static_publisher>false</static_publisher>
+      <static_update_frequency>1</static_update_frequency>
+    </plugin>
+  </gazebo>
+
+  <!-- Base Link Physics and Visual Configuration -->
+  <gazebo reference="base_link">
+    <material>${body_color}</material>
+    <mu1>0.8</mu1>
+    <mu2>0.8</mu2>
+    <kp>1000000.0</kp> <!-- Stiffness (1e6 = somewhat soft) -->
+    <kd>100.0</kd>     <!-- Damping (100 = high damping) -->
+    <self_collide>false</self_collide>
+    <gravity>true</gravity>
+  </gazebo>
+
+  <gazebo reference="imu_link">
+    <gravity>true</gravity>
+    <sensor name="imu_sensor" type="imu">
+      <always_on>1</always_on>
+      <update_rate>100</update_rate>
+      <visualize>true</visualize>
+      <topic>imu</topic>
+    </sensor>
+  </gazebo>
+
+  <!-- Additional Links Configuration -->
+  <gazebo reference="leg_carriage">
+    <material>${body_color}</material>
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+    <self_collide>false</self_collide>
+  </gazebo>
+
+  <gazebo reference="left_leg">
+    <material>${body_color}</material>
+    <mu1>1.0</mu1> <!-- Higher friction for feet -->
+    <mu2>1.0</mu2>
+    <kp>1000000.0</kp>
+    <kd>100.0</kd>
+    <self_collide>true</self_collide>
+  </gazebo>
+
+  <gazebo reference="right_leg">
+    <material>${body_color}</material>
+    <mu1>1.0</mu1>
+    <mu2>1.0</mu2>
+    <kp>1000000.0</kp>
+    <kd>100.0</kd>
+    <self_collide>true</self_collide>
+  </gazebo>
+
+  <!-- Physics Configuration for Gazebo Fortress -->
+  <gazebo>
+    <physics type="ode"> 
+      <max_step_size>0.001</max_step_size>
+      <real_time_update_rate>1000</real_time_update_rate>
+    </physics>
+  </gazebo>
 
 </robot>

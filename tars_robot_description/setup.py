@@ -26,6 +26,9 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
+            'test_movement = tars_robot_description.test_movement:main',
+            'train_tars = tars_robot_description.train_tars:main',
+            'run_tars = tars_robot_description.run_tars:main',
         ],
     },
 )

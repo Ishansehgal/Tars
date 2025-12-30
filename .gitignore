@@ -1,0 +1,29 @@
+# ROS2 Build Artifacts
+build/
+install/
+log/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.eggs/
+*.egg-info/
+
+# Reinforcement Learning / Training Artifacts
+tars_ppo_model*.zip
+tars_tensorboard/
+*.zip
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Gazebo caches
+.gazebo/
+
+# OS
+.DS_Store
+Thumbs.db
